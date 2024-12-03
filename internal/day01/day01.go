@@ -9,7 +9,7 @@ import (
 )
 
 func CompareDistances() []int {
-	content, err := reader.ReadColumnIntInput("./inputs/day01.txt")
+	content, err := reader.ReadIntByColumnFile("./inputs/day01.txt")
 	if err != nil {
 		log.Fatalf("Failed to read input: %v", err)
 	}
@@ -33,7 +33,7 @@ func CompareDistances() []int {
 }
 
 func GetSimilarity() []int {
-	content, err := reader.ReadColumnIntInput("./inputs/day01.txt")
+	content, err := reader.ReadIntByColumnFile("./inputs/day01.txt")
 	if err != nil {
 		log.Fatalf("Failed to read input: %v", err)
 	}

@@ -6,3 +6,7 @@ func Abs(x int) int {
 	}
 	return x
 }
+
+func EqualSign(x int, y int) bool {
+	return (x >= 0 && y >= 0) || (x <= 0 && y <= 0)
+}
