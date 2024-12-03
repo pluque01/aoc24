@@ -2,9 +2,9 @@ package main
 
 import (
 	"log"
-	"pluque01/aoc24/internal/day02"
+	"pluque01/aoc24/internal/day03"
 )
 
 func main() {
-	log.Printf("Solution: %d\n", day02.Solution2())
+	log.Printf("Solution: %d\n", day03.Solution2())
 }

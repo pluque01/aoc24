@@ -64,3 +64,22 @@ func ReadIntByLineFile(input string) (outputs [][]int, err error) {
 	}
 	return outputs, nil
 }
+
+func ReadStringByLineFile(input string) (outputs []string, err error) {
+	file, err := os.Open(input)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	r := bufio.NewReader(file)
+	for {
+		line, _, err := r.ReadLine()
+		if err != nil {
+			break
+		}
+		if len(line) > 0 {
+			outputs = append(outputs, string(line))
+		}
+	}
+	return outputs, nil
+}
