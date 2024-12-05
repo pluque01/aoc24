@@ -83,3 +83,26 @@ func ReadStringByLineFile(input string) (outputs []string, err error) {
 	}
 	return outputs, nil
 }
+
+func ReadCharFile(input string) (outputs [][]rune, err error) {
+	file, err := os.Open(input)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	r := bufio.NewReader(file)
+	for {
+		line, _, err := r.ReadLine()
+		if err != nil {
+			break
+		}
+		if len(line) > 0 {
+			lineRune := []rune{}
+			for _, runeValue := range string(line) {
+				lineRune = append(lineRune, runeValue)
+			}
+			outputs = append(outputs, lineRune)
+		}
+	}
+	return outputs, nil
+}
