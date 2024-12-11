@@ -112,6 +112,9 @@ func SplitIntegerByMiddle(n int) (int, int) {
 }
 
 func RunSimulationInteger(value int, iterations int) int {
+	if v, ok := StoneGenerationMap[StoneGeneration{value, iterations}]; ok {
+		return v
+	}
 	if iterations == 0 {
 		return 0
 	}
@@ -123,24 +126,16 @@ func RunSimulationInteger(value int, iterations int) int {
 		stonesGenerated++
 		var newStone int
 		newValue, newStone = SplitIntegerByMiddle(value)
-		if v, ok := StoneGenerationMap[StoneGeneration{newStone, iterations - 1}]; !ok {
-			g := RunSimulationInteger(newStone, iterations-1)
-			StoneGenerationMap[StoneGeneration{newStone, iterations - 1}] = g
-			stonesGenerated += g
-		} else {
-			stonesGenerated += v
-		}
+		g := RunSimulationInteger(newStone, iterations-1)
+		StoneGenerationMap[StoneGeneration{newStone, iterations - 1}] = g
+		stonesGenerated += g
 	} else {
 		newValue = value * 2024
 	}
 
-	if v, ok := StoneGenerationMap[StoneGeneration{newValue, iterations - 1}]; !ok {
-		g := RunSimulationInteger(newValue, iterations-1)
-		StoneGenerationMap[StoneGeneration{newValue, iterations - 1}] = g
-		stonesGenerated += g
-	} else {
-		stonesGenerated += v
-	}
+	g := RunSimulationInteger(newValue, iterations-1)
+	StoneGenerationMap[StoneGeneration{newValue, iterations - 1}] = g
+	stonesGenerated += g
 	return stonesGenerated
 }
 
