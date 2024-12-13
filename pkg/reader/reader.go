@@ -79,8 +79,6 @@ func ReadStringByLineFile(input string) (outputs []string, err error) {
 		}
 		if len(line) > 0 {
 			outputs = append(outputs, string(line))
-		} else {
-			outputs = append(outputs, "")
 		}
 	}
 	return outputs, nil
